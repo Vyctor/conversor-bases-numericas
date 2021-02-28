@@ -1,1 +1,25 @@
-<p>conversor works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Conversor de bases numéricas</mat-card-title>
+    <mat-card-subtitle>Realize a conversão de um valor na base escolhida para inúmeras bases numéricas.
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <form [formGroup]="formConversao" fxLayout="row">
+      <mat-form-field appearance="fill" fxFlex="50">
+        <mat-label>Selecione a base</mat-label>
+        <mat-select formControlName="baseNumerica">
+          <mat-option value="binario">Binário</mat-option>
+          <mat-option value="decimal">Decimal</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="50">
+        <mat-label>Valor</mat-label>
+        <input matInput formControlName="valor">
+      </mat-form-field>
+    </form>
+
+    <p></p>
+  </mat-card-content>
+</mat-card>
