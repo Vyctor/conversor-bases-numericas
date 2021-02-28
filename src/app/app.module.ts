@@ -10,11 +10,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { ConversorComponent } from './components/conversor/conversor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ConversorComponent
   ],
   imports: [
     BrowserModule,
