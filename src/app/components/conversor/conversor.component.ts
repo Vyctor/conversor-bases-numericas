@@ -7,19 +7,19 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 })
 export class ConversorComponent implements OnInit {
 
-  public formConversao: FormGroup;
+  public convertForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
-    this.formConversao = this.formBuilder.group({
-      baseNumerica: [''],
-      valor: ['']
+    this.convertForm = this.formBuilder.group({
+      base: [''],
+      value: ['']
     });
   }
 
   ngOnInit(): void {
-    this.formConversao.valueChanges.subscribe(data => {
-      if (data.baseNumerica && data.valor) {
-        this.convert(data.baseNumerica, data.valor);
+    this.convertForm.valueChanges.subscribe(data => {
+      if (data.base && data.base) {
+        this.convert(data.base, data.value);
       }
     });
   }
@@ -30,7 +30,7 @@ export class ConversorComponent implements OnInit {
         this.decToBin(value);
         console.log(this.decToBin(value));
         break;
-      case 'binario':
+      case 'binary':
         this.binToDec(value);
         console.log(this.binToDec(value));
         break;
