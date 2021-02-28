@@ -28,11 +28,9 @@ export class ConversorComponent implements OnInit {
     switch (base) {
       case 'decimal':
         this.decToBin(value);
-        console.log(this.decToBin(value));
         break;
       case 'binary':
         this.binToDec(value);
-        console.log(this.binToDec(value));
         break;
     }
   }
@@ -41,7 +39,6 @@ export class ConversorComponent implements OnInit {
     let result = 0;
     const binaryValue = (value.split('').reverse().map(v => parseInt(v, undefined)));
     binaryValue.forEach((ditig, index) => {
-      console.log(`${ditig} * ${ditig} ˆ ${index}`);
       result += ditig * (Math.pow(2, index));
     });
     return result;
