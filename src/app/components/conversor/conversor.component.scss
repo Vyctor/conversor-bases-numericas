@@ -1,3 +1,15 @@
 mat-card-content {
   padding-top: 16px;
+
+  form {
+    display: flex;
+    justify-content: space-around;
+
+    mat-form-field {
+      width: 40%;
+    }
+  }
+  .results {
+    margin: 16px;
+  }
 }

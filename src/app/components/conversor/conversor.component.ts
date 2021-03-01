@@ -8,17 +8,21 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class ConversorComponent implements OnInit {
 
   public convertForm: FormGroup;
+  public binaryResult = 0;
+  public decimalResult = 0;
+
 
   constructor(private formBuilder: FormBuilder) {
     this.convertForm = this.formBuilder.group({
-      base: [''],
-      value: ['']
+      base: [],
+      value: []
     });
   }
 
   ngOnInit(): void {
     this.convertForm.valueChanges.subscribe(data => {
-      if (data.base && data.base) {
+      if (data.base && data.value) {
+        console.log(data);
         this.convert(data.base, data.value);
       }
     });
@@ -27,10 +31,10 @@ export class ConversorComponent implements OnInit {
   convert(base: string, value: string): void {
     switch (base) {
       case 'decimal':
-        this.decToBin(value);
+        this.binaryResult = this.decToBin(value);
         break;
       case 'binary':
-        this.binToDec(value);
+        this.decimalResult = this.binToDec(value);
         break;
     }
   }
