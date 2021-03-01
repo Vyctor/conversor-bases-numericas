@@ -3,7 +3,8 @@ mat-card-content {
 
   form {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 16px;
 
     mat-form-field {
       width: 40%;
