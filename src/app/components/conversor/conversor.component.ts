@@ -3,26 +3,25 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-conversor',
   templateUrl: './conversor.component.html',
-  styleUrls: ['./conversor.component.scss']
+  styleUrls: ['./conversor.component.scss'],
 })
 export class ConversorComponent implements OnInit {
-
   public convertForm: FormGroup;
-  public binaryResult = 0;
-  public decimalResult = 0;
-
+  public binaryResult: number | undefined;
+  public decimalResult: number | undefined;
+  public customPatterns = {};
+  public maskPattern = '';
 
   constructor(private formBuilder: FormBuilder) {
     this.convertForm = this.formBuilder.group({
       base: [],
-      value: []
+      value: [],
     });
   }
 
   ngOnInit(): void {
-    this.convertForm.valueChanges.subscribe(data => {
+    this.convertForm.valueChanges.subscribe((data) => {
       if (data.base && data.value) {
-        console.log(data);
         this.convert(data.base, data.value);
       }
     });
@@ -41,9 +40,12 @@ export class ConversorComponent implements OnInit {
 
   binToDec(value: string): number {
     let result = 0;
-    const binaryValue = (value.split('').reverse().map(v => parseInt(v, undefined)));
-    binaryValue.forEach((ditig, index) => {
-      result += ditig * (Math.pow(2, index));
+    const binaryValue = value
+      .split('')
+      .reverse()
+      .map((v) => parseInt(v, undefined));
+    binaryValue.forEach((digit, index) => {
+      result += digit * Math.pow(2, index);
     });
     return result;
   }
@@ -63,5 +65,20 @@ export class ConversorComponent implements OnInit {
       }
     }
     return parseInt(result.reverse().join(''), undefined);
+  }
+
+  onBaseChange(event: any): void {
+    this.convertForm.get('value')?.reset();
+    this.binaryResult = undefined;
+    this.decimalResult = undefined;
+
+    if (event.value === 'binary') {
+      this.customPatterns = { 0: { pattern: new RegExp('[0-1]') } };
+      this.maskPattern = '0{100}';
+    }
+    if (event.value === 'decimal') {
+      this.customPatterns = { 0: { pattern: new RegExp('[0-9]') } };
+      this.maskPattern = '0{100}';
+    }
   }
 }

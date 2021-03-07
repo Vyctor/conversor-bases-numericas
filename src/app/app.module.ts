@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 // Angular Components Imports
 import { MatMenuModule } from '@angular/material/menu';
@@ -20,11 +21,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ConversorComponent } from './components/conversor/conversor.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ToolbarComponent,
-    ConversorComponent
-  ],
+  declarations: [AppComponent, ToolbarComponent, ConversorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -37,9 +34,10 @@ import { ConversorComponent } from './components/conversor/conversor.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
